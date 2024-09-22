@@ -9,13 +9,13 @@ import { BsFillPlayFill , BsPauseCircleFill } from "react-icons/bs";
 import ReactPlayer from 'react-player';
 
 const videoImages = [
-  { id: 1, img: img1, videoUrl: "https://www.youtube.com/watch?v=nKeNSmuz4do" },
+  { id: 1, img: img1, videoUrl: "https://www.youtube.com/shorts/kbMWi1lVJPQ?feature=share" },
   { id: 2, img: img2, videoUrl: "https://www.youtube.com/shorts/mBT8rweZdRc?feature=share" }, 
   { id: 3, img: img3, videoUrl: "https://youtu.be/NeEL9ZTWRIA" },
   { id: 4, img: img4, videoUrl: "https://www.youtube.com/shorts/RpzkFFRAEfQ?feature=share" },
   { id: 5, img: img1, videoUrl: "https://www.youtube.com/watch?v=nKeNSmuz4do" },
-  { id: 6, img: img2, videoUrl: "https://www.youtube.com/shorts/mBT8rweZdRc?feature=share" },
-  { id: 7, img: img3, videoUrl: "https://youtu.be/NeEL9ZTWRIA" },
+  { id: 6, img: img2, videoUrl: "https://www.youtube.com/shorts/vp7f-XSKOJ4?feature=share" },
+  { id: 7, img: img3, videoUrl: "https://www.youtube.com/shorts/nACHDoiDS6s?feature=share" },
 ];
 
 const VideoSection = () => {

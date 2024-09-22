@@ -7,12 +7,11 @@ import Empty from "./pages/Empty";
 import { PiNotepad, PiCube, PiStorefrontLight, PiLightbulbFilament, PiMoney } from "react-icons/pi";
 import { GrNotes } from "react-icons/gr";
 import { BsStars } from "react-icons/bs";
-import { FiHome, FiTruck } from "react-icons/fi";
-
+import { FiTruck } from "react-icons/fi";
+import Analytics from "./pages/Analytics";
 
 function App() {
   const options = [
-    
     {
       id: 2,
       icon: <PiNotepad />,
@@ -64,22 +63,27 @@ function App() {
   ];
 
   return (
-   
-      <BrowserRouter>
-        <Navbar />
-        <div className="flex h-screen mt-2 border-y-2 shadow-shadowDown ">
+    <BrowserRouter>
+      <Navbar />
+      <div className="flex h-screen mt-2 border-y-2 shadow-shadowDown">
         <SideNav options={options} />
         <main className="flex-1 p-4 bg-gray-100 overflow-auto">
           <Routes>
+          
             <Route path="/" element={<Home />} />
+
+          
+            <Route path="/analytics" element={<Analytics />} />
             {options.map((item) => (
               <Route key={item.id} path={item.route} element={<Empty />} />
             ))}
+
+            
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
       </div>
-      </BrowserRouter>
-    
+    </BrowserRouter>
   );
 }
 
