@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <div className='my-5 relative items-center h-auto  xl:mx-14 lg:mt-10'>
       {/* brand box */}
-      <div className='h-32 xl:bg-neutral-200 rounded-lg flex items-center justify-evenly'>
+      <div className='h-40 xl:bg-neutral-200 rounded-lg flex items-center justify-evenly'>
         <div className='block mt-10  xl:mt-3 space-y-3 justify-center xl:flex flex-col  '>
           <div className='flex flex-col items-center'>
             <div className='h-[1px] w-full md:w-[380px] xl:w-[275px]  bg-black lg:ml-16'></div>
@@ -84,7 +84,7 @@ const Home = () => {
               to empower digital entrepreneurs in India!
             </p>
 
-            {/* Absolute position the feature list */}
+            
             <div className='xl:hidden mt-3 relative '>
               <button className='bg-black  text-white p-2 rounded-md' onClick={handleFeatures}>
                 {openFeatures ? "Hide Features" : "Show Features"}
@@ -108,7 +108,7 @@ const Home = () => {
 
         {/* Slant Line */}
         <div className='relative'>
-          <div className='hidden xl:flex w-[130px] h-[1px] bg-black ' style={{ transform: 'rotate(-75deg)' }}></div>
+          <div className='hidden xl:flex w-[160px] h-[1px] bg-black ' style={{ transform: 'rotate(-75deg)' }}></div>
         </div>
 
         
