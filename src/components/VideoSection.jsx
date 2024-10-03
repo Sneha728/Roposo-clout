@@ -24,8 +24,9 @@ const videoImages = [
 ];
 
 const VideoSection = () => {
-  const [startIndex, setStartIndex] = useState(0);
+  
   const [imgPerPage, setImgPerPage] = useState(4);
+  const [startIndex, setStartIndex] = useState(0);
  
   const [playingVideo, setPlayingVideo] = useState(null); 
 
