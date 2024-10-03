@@ -49,7 +49,7 @@ const SHome = () => {
     },
   ]
     return (
-        <div className=' mt-11  space-y-6'>
+        <div className=' mt-11  space-y-8 h-screen'>
       <div  className="flex flex-col items-center">
       <span className="w-full bg-purple-200 h-[1px]"></span>
         
