@@ -150,70 +150,84 @@ const Accessories = () => {
                 </>
               )
         },
-    ]
     
+    ];
 
-   const [startIndex , setStartIndex] = useState(0);
-   const [itemsPerPage , setItemsPerPage] = useState(9);
+    const [startIndex, setStartIndex] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(9);
 
-   useEffect(()=>{
-    const handleResize = () =>{
-        if(window.innerWidth < 768 ){
-            setItemsPerPage(3);
-        }else{
-            setItemsPerPage(9);
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <768) {
+                setItemsPerPage(3);
+            } 
+            else {
+                setItemsPerPage(9);
+            }
+        };
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    const handleNext = () => {
+        const nextIndex = startIndex + itemsPerPage;
+        if (nextIndex < items.length) {
+            setStartIndex(nextIndex);
+        } else {
+            setStartIndex(0);
         }
-    }
-    handleResize();
-
-    window.addEventListener("resize",handleResize);
-
-    return  () =>{
-        window.removeEventListener("resize",handleResize);
-
     };
 
-
-   },[]);
-
-   const visibleItems = items.slice(startIndex,startIndex+itemsPerPage);
-
-   const handleNext = () =>{
-    const nextIndex = startIndex + itemsPerPage;
-    if(nextIndex < items.length){
-        setStartIndex(nextIndex);
-    }else{
-        setStartIndex(0);
-    }
-   }
-
-   const handlePrev = () =>{
-    const prevIndex = startIndex - itemsPerPage;
-    if(prevIndex >= 0 ){
-        setStartIndex(prevIndex);
-    }else{
-        setStartIndex(items.length - itemsPerPage);
-    }
-   }
-
-
-  return (
-    <div className='flex items-center justify-around'>
-        <MdKeyboardArrowLeft  className='text-2xl hover:bg-black hover:text-white rounded-full' onClick={handlePrev}/>
-        {
-            visibleItems.map((item)=>(
-                <ul className='flex flex-col items-center' key={item.id}>
-                    <li > <img src={item.img} alt={item.title} className="w-16 h-16  rounded-full shadow-md mb-3 bg-gray-950" /></li>
-                    <li className=' flex text-center font-semibold text-sm text-gray-500 h-10  '>{item.title}</li>
-                </ul>
-            ))
+    const handlePrev = () => {
+        const prevIndex = startIndex - itemsPerPage;
+        if (prevIndex >= 0) {
+            setStartIndex(prevIndex);
+        } else {
+            setStartIndex(items.length - itemsPerPage);
         }
+    };
 
-        
-        <MdKeyboardArrowRight  className=' text-2xl  hover:bg-black hover:text-white rounded-full ' onClick={handleNext}/>
-      
-    </div>
-  )
-}
+    return (
+        <div className='relative flex items-center w-full overflow-hidden'>
+            <MdKeyboardArrowLeft
+                className='text-2xl bg-white  hover:bg-slate-800 hover:text-white rounded-full cursor-pointer z-10 absolute left-0'
+                onClick={handlePrev}
+            />
+
+<div 
+                className='w-full flex transition-transform duration-1000'
+                style={{
+                    transition: 'transform 1.5s ease', 
+                    transform: `translateX(-${(startIndex / itemsPerPage) * 100}%)`
+                }}
+            >
+                {items.map((item) => (
+                    <ul className='flex flex-col items-center min-w-[33.33%] sm:min-w-[11.11%]' key={item.id}>
+                        <li>
+                            <img
+                                src={item.img}
+                                alt={item.title}
+                                className='w-[75px] h-[75px] md:w-16 md:h-16 lg:w-[75px] lg:h-[75px] xl:w-20 xl:h-20 rounded-full shadow-2xl mb-3 bg-gray-950'
+                            />
+                        </li>
+                        <li className='flex text-center font-semibold text-sm text-gray-500 h-10'>
+                            {item.title}
+                        </li>
+                    </ul>
+                ))}
+            </div>
+
+            <MdKeyboardArrowRight
+                className='text-2xl bg-white hover:bg-slate-800 hover:text-white rounded-full cursor-pointer z-10 absolute right-0'
+                onClick={handleNext}
+            />
+        </div>
+    );
+};
 
 export default Accessories;

@@ -9,6 +9,7 @@ import { GrNotes } from "react-icons/gr";
 import { BsStars } from "react-icons/bs";
 import { FiTruck } from "react-icons/fi";
 import Analytics from "./pages/Analytics";
+import Footer from "./components/Footer";
 
 function App() {
   const options = [
@@ -63,14 +64,15 @@ function App() {
   ];
 
   return (
+    <div >
     <BrowserRouter>
       <Navbar />
-      <div className="flex h-screen mt-2 border-y-2 shadow-shadowDown">
+      <div className="flex  mt-3 ">
         <SideNav options={options} />
-        <main className="flex-1 p-4 bg-gray-100 overflow-auto">
+        <main className=" w-screen bg-gray-100 ">
           <Routes>
           
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home options={options}  />} />
 
           
             <Route path="/analytics" element={<Analytics />} />
@@ -79,11 +81,13 @@ function App() {
             ))}
 
             
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<Home options={options} />} />
           </Routes>
         </main>
       </div>
+      <Footer />
     </BrowserRouter>
+    </div>
   );
 }
 

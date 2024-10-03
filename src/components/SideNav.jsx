@@ -2,76 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiHome } from 'react-icons/fi';
 import { BsGraphUpArrow } from "react-icons/bs";
-import { MdMenu } from "react-icons/md";
-import ResponsiveMenu from './ResponsiveMenu';
+
 
 const SideNav = ({ options }) => {
-  const [open, setOpen] = useState(false);
  
+  const [selected, setSelected] = useState(''); 
   
 
- 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setOpen(false); 
-      }
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  
-  const closeMenu = () => {
-    setOpen(false);
+  const handleClick = (route) => {
+    setSelected(route); 
   };
- 
-    
-  
 
   return (
-    <section>
+    <section className='fixed left-0 z-50 top-16'>
       <div className='hidden lg:block'>
-        <div className="w-60 bg-neutral-100 border-r-2 border-gray-200 p-4 flex flex-col ">
-          <div className="my-5">
+        <div className="w-56 lg:w-52 xl:w-56 bg-neutral-100 border-r-2 border-gray-200 p-3 flex flex-col h-screen">
+          <div className="mt-5 mb-3">
             <Link
               to="/analytics"
-              className="flex items-center gap-3 p-2 rounded-md hover:bg-black hover:text-white"
+              className={`flex items-center gap-3 p-2  ${
+                selected === '/analytics' ? 'bg-black text-white' : 'hover:bg-neutral-200 hover:font-bold hover:text-black'
+              }`}
+              onClick={() => handleClick('/analytics')}
             >
-              <BsGraphUpArrow className='text-xl' />
-              <span>Analytics</span>
+              <BsGraphUpArrow className='text-2xl' />
+              <span className='text-xs'>Analytics</span>
             </Link>
           </div>
-          <div className='mb-3 w-60 border-gray-300 '><hr /></div>
+          <span className='w-[200px] h-[1px] bg-neutral-300 mb-2'></span>
+
           <div className="mb-4">
             <Link
               to="/"
-              className="flex items-center gap-3 p-2 rounded-md hover:bg-black hover:text-white"
+              className={`flex items-center gap-3 p-2 ${
+                selected === '/' ? 'bg-black text-white' : 'hover:bg-neutral-200 hover:font-bold hover:text-black'
+              }`}
+              onClick={() => handleClick('/')}
             >
-              <FiHome className='text-xl' />
-              <span >Home</span>
+              <FiHome className='text-2xl' />
+              <span className='text-xs'>Home</span>
             </Link>
           </div>
+
           {options.map((item) => (
             <div key={item.id} className="mb-4">
               <Link
                 to={item.route}
-                className="flex items-center gap-3 p-2 rounded-md hover:bg-black hover:text-white"
+                className={`flex items-center gap-3 p-2  ${
+                  selected === item.route ? 'bg-black text-white' : 'hover:bg-neutral-200 hover:font-bold hover:text-black'
+                }`}
+                onClick={() => handleClick(item.route)}
               >
-                <span className='text-xl'>{item.icon}</span>
-                <span>{item.title}</span>
+                <span className='text-2xl'>{item.icon}</span>
+                <span className='text-xs'>{item.title}</span>
               </Link>
             </div>
           ))}
         </div>
       </div>
 
-      <div className='lg:hidden' onClick={() => setOpen(!open)}>
-        <MdMenu className='text-2xl' />
-      </div>
+     
 
-      <ResponsiveMenu open={open} options={options} closeMenu={closeMenu} />
+      
     </section>
   );
 };
