@@ -69,7 +69,7 @@ const Navbar = () => {
                 <FiBell />
               </div>
 
-              {/* Search bar */}
+             
               <div className="hidden lg:flex items-center my-3 md:my-0">
                 <div className="relative w-full md:w-full">
                   <input
@@ -96,7 +96,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Conditionally render the SearchPopUp */}
+      
       {smallSearch && <SearchPopUp smallSearch={smallSearch} setSmallSearch={setSmallSearch}  />}
     </div>
   );

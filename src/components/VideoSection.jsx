@@ -80,7 +80,7 @@ const VideoSection = () => {
 
   return (
     <div className="lg:flex  lg:flex-col items-center w-full">
-    {/* Header Section */}
+   
     <div className=" flex justify-between items-center w-full mb-2">
       <h1 className="text-2xl font-bold ml-3 mr-3 mx:auto mb-2 md:mb-0 ">Newly Launched</h1>
       <div className="flex items-center justify-center gap-2 mb-2 md:mb-0 md:justify-end">
@@ -109,7 +109,7 @@ const VideoSection = () => {
       />
       {viewImgs.map((imgs) => (
         <span key={imgs.id} className="relative w-full h-56 lg:w-52 lg:h-56 flex flex-1 rounded-lg mb-4 mx-3">
-          {/* Image (Only visible when video is not playing) */}
+          
           {playingVideo !== imgs.videoUrl && (
             <img
               src={imgs.img}
@@ -118,7 +118,6 @@ const VideoSection = () => {
             />
           )}
   
-          {/* Video (Only visible when the corresponding video is playing) */}
           {playingVideo === imgs.videoUrl && (
             <ReactPlayer
               url={playingVideo}
@@ -130,17 +129,17 @@ const VideoSection = () => {
             />
           )}
   
-          {/* Play/Pause Button */}
+          
           <span className="absolute inset-0 flex justify-center items-center">
             {playingVideo === imgs.videoUrl ? (
               <BsPauseCircleFill
                 className="text-4xl bg-white rounded-full p-1 cursor-pointer"
-                onClick={() => handlePlayClick(null)} // Pause video
+                onClick={() => handlePlayClick(null)} 
               />
             ) : (
               <BsFillPlayFill
                 className="text-4xl bg-white rounded-full p-1 cursor-pointer"
-                onClick={() => handlePlayClick(imgs.videoUrl)} // Play video
+                onClick={() => handlePlayClick(imgs.videoUrl)} 
               />
             )}
           </span>

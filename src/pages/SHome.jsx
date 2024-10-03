@@ -64,37 +64,17 @@ const SHome = () => {
         <span className="w-full bg-purple-300 h-[0.2px]"></span>
         </div>
   
-        {/* accessories */}
+       
         <div className="">
           <Accessories />
         </div>
   
-        {/* videos */}
+        
         <div>
           <VideoSection />
         </div>
   
-        {/* footer */}
-        {/* <div className="fixed bottom-0 w-full flex items-center justify-around bg-white p-2 lg:hidden">
-        {choices.map((option) => (
-       <div key={option.id} className="flex-1">
-       <Link
-        to={option.route}
-        className={`flex items-center justify-center w-full p-2 rounded-md ${
-          selected === option.route
-            ? 'bg-black text-white'
-            : 'hover:font-bold hover:text-black'
-        }`}
-        onClick={() => handleClick(option.route)}
-      >
-        <span className="flex flex-col items-center space-y-1">
-          <span className="text-lg">{option.icon}</span>
-          <span className="font-semibold text-[10px]">{option.title}</span>
-        </span>
-      </Link>
-    </div>
-  ))}
-</div> */}
+       
 </div>
     );
 
